@@ -1,0 +1,12 @@
+/* chart.css */
+.chart-card {
+  border-radius: 12px; padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.9));
+  box-shadow: 0 8px 36px rgba(2,6,23,0.06); border:1px solid var(--border);
+}
+.chart-title { font-weight:700; margin-bottom:10px; font-size:15px; }
+.chart-box { height: 260px; display:flex; align-items:center; justify-content:center; }
+
+/* compact legend (optional) */
+.legend { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+.legend .item { display:flex; gap:8px; align-items:center; font-size:13px; color:var(--muted); }
+.legend .swatch { width:12px; height:12px; border-radius:3px; flex-shrink:0; }

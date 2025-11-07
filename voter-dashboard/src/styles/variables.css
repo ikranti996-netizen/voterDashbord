@@ -1,0 +1,57 @@
+:root{
+  /* type */
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --lead: 16px;
+  --h1: 28px;
+  --h2: 22px;
+  --h3: 18px;
+
+  /* spacing */
+  --space-xs: 6px;
+  --space-sm: 10px;
+  --space: 16px;
+  --space-md: 20px;
+  --space-lg: 28px;
+  --radius: 12px;
+
+  /* palette (professional, calm) */
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0b1220;
+  --accent-1: #2563eb;   /* strong blue */
+  --accent-2: #06b6d4;   /* cyan */
+  --accent-3: #10b981;   /* green */
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.85);
+  --shadow-1: 0 8px 30px rgba(2,6,23,0.08);
+  --border: rgba(11,17,32,0.06);
+
+  /* chart colors (order) */
+  --c1: #2563eb;
+  --c2: #06b6d4;
+  --c3: #10b981;
+  --c4: #f59e0b;
+  --c5: #ef4444;
+  --c6: #8b5cf6;
+}
+
+/* base typography */
+body{
+  font-family: var(--font-sans);
+  font-size: var(--lead);
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* utility */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--space); }
+.row { display:flex; gap: var(--space); align-items:center; }
+.col { display:flex; flex-direction:column; gap: var(--space); }
+.small { font-size: 13px; color: var(--muted); }
+.mt-1{ margin-top: var(--space-sm); } .mt-2{ margin-top: var(--space); } .mt-3{ margin-top: var(--space-md); }
+.mb-2{ margin-bottom: var(--space); }

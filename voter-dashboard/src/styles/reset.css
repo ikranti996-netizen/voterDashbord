@@ -1,0 +1,201 @@
+/* theme-polish.css
+   Senior-level UI polish: background, card glass, borders, buttons, focus, microinteractions
+*/
+
+/* --- palette accents (reads from variables.css if present) --- */
+:root {
+  --bg-grad-1: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(6,182,212,0.02));
+  --bg-hero: linear-gradient(180deg, #f8fafc 0%, #ffffff 60%);
+  --panel-glass: rgba(255,255,255,0.7);
+  --panel-border: rgba(11,17,32,0.06);
+  --muted-50: rgba(107,114,128,0.65);
+
+  --accent-1-opaque: rgba(37,99,235,0.98);
+  --accent-focus: rgba(37,99,235,0.18);
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+/* --- page background & hero accent --- */
+body {
+  background: var(--bg-hero);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+/* small hero stripe behind header for subtle depth */
+.app-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 220px;
+  background: linear-gradient(180deg, rgba(37,99,235,0.04), rgba(6,182,212,0.01));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- card / glass surface --- */
+.card {
+  background: linear-gradient(180deg, var(--panel-glass), rgba(255,255,255,0.9));
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: var(--space);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  position: relative;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(2,6,23,0.10);
+}
+
+/* lighter card for tiny UI pieces */
+.card-sm {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* --- polished borders and chips --- */
+.card-border-soft {
+  border: 1px solid rgba(11,17,32,0.03);
+  border-radius: 12px;
+}
+
+/* small colored accent line on left for list items */
+.accent-left {
+  position: relative;
+  padding-left: 14px;
+}
+.accent-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 6px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--accent-1-opaque), var(--accent-2));
+  box-shadow: 0 6px 20px rgba(99,102,241,0.08);
+}
+
+/* --- refined buttons --- */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  border: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 120ms;
+}
+.btn:active { transform: translateY(1px) }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none }
+
+/* primary */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-1-opaque), var(--accent-2));
+  color: white;
+  box-shadow: 0 10px 30px rgba(37,99,235,0.12);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(37,99,235,0.14); }
+
+/* ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(11,17,32,0.06);
+}
+.btn-ghost:hover { background: rgba(11,17,32,0.02) }
+
+/* danger */
+.btn-danger {
+  background: linear-gradient(90deg,var(--danger), #f97316);
+  color: #fff;
+}
+
+/* subtle icon button */
+.icon-btn {
+  display:inline-grid;
+  place-items:center;
+  width:38px;height:38px;border-radius:10px;
+  background: transparent;border:1px solid rgba(11,17,32,0.04);
+}
+.icon-btn:hover { background: rgba(11,17,32,0.03) }
+
+/* --- inputs & selects --- */
+.input, textarea, select {
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(11,17,32,0.06);
+  background: #fff;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+.input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-1-opaque);
+  box-shadow: 0 8px 28px var(--accent-focus);
+}
+
+/* small helper for input row actions (like option + remove) */
+.input-row { display:flex; gap:8px; align-items:center; }
+.input-row .input { flex:1; }
+.remove-small { background:transparent;border:none;color:var(--danger);cursor:pointer; font-weight:700 }
+
+/* --- progress / option visuals --- */
+.progress-track {
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(11,17,32,0.04), rgba(11,17,32,0.02));
+  overflow: hidden;
+}
+.progress-fill {
+  height: 12px;
+  border-radius: 999px;
+  transition: width 520ms cubic-bezier(.2,.9,.3,1);
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  box-shadow: inset 0 -2px 8px rgba(0,0,0,0.04);
+}
+
+/* --- chart card refinements --- */
+.chart-card {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.chart-title { font-weight:800; font-size:15px; color: var(--text); }
+.legend { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px; }
+.legend .item { display:flex; gap:8px; align-items:center; color:var(--muted-50); font-weight:600; background: rgba(255,255,255,0.6); padding:6px 8px; border-radius:8px; border:1px solid rgba(11,17,32,0.03); }
+
+/* swatch sizes */
+.legend .swatch { width:10px; height:10px; border-radius:3px; }
+
+/* --- admin panel polish --- */
+.admin-poll {
+  display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+  padding:12px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.95));
+  border: 1px solid rgba(11,17,32,0.04);
+}
+.admin-controls { display:flex; gap:8px; flex-direction:column; }
+
+/* editing area */
+.edit-area { padding:14px; border-radius:12px; background: #fff; border: 1px solid rgba(11,17,32,0.04); box-shadow: 0 8px 30px rgba(2,6,23,0.04); }
+
+/* --- accessibility / focus --- */
+:focus {
+  outline: none;
+}
+button:focus, a:focus, .input:focus {
+  outline: 3px solid rgba(37,99,235,0.12);
+  outline-offset: 3px;
+}
+
+/* --- small responsive tweaks --- */
+@media (max-width: 780px) {
+  .card { padding: 12px; border-radius: 10px; }
+  .app-wrapper::before { height: 140px; }
+}

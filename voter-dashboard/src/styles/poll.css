@@ -1,0 +1,54 @@
+/* poll.css */
+
+/* Create poll card */
+.create-card .form-row { display:flex; gap:10px; align-items:flex-start; }
+.input {
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+.input:focus { outline: none; box-shadow: 0 6px 20px rgba(37,99,235,0.10); border-color: var(--accent-1); }
+
+/* Buttons */
+.btn {
+  display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700;
+}
+.btn-ghost { background:transparent;border:1px solid var(--border); color:var(--text) }
+.btn-primary { background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff; box-shadow:0 10px 30px rgba(37,99,235,0.12) }
+.btn-danger { background: linear-gradient(90deg,var(--danger),#f97316); color:#fff }
+
+/* Poll list rows */
+.poll-row {
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding:12px; border-radius:10px; border:1px solid rgba(11,17,32,0.04); background: linear-gradient(180deg,#fff,#fbfdff);
+}
+.poll-link { font-weight:700; color:var(--text); }
+
+/* Poll detail / options */
+.poll-detail { display:flex; flex-direction:column; gap:var(--space); }
+.option {
+  display:flex; flex-direction:column; gap:8px; padding:12px; border-radius:12px; border:1px solid rgba(11,17,32,0.04); background: linear-gradient(180deg,#fff,#fbfbff);
+}
+.option-head { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.option-label { font-weight:700; font-size:15px; color:var(--text); }
+.option-meta { color:var(--muted); font-size:13px; }
+
+/* progress */
+.progress-track {
+  height:12px; border-radius:999px; background: linear-gradient(90deg, rgba(11,17,32,0.04), rgba(11,17,32,0.02)); overflow:hidden;
+}
+.progress-fill {
+  height:12px; border-radius:999px; transition: width .52s cubic-bezier(.2,.9,.3,1);
+  background: linear-gradient(90deg,var(--c1),var(--c2));
+}
+
+/* small footer note */
+.footer-note { font-size:13px; color:var(--muted); text-align:right; }
+
+/* responsive */
+@media (max-width: 879px) {
+  .header { flex-direction:column; align-items:flex-start; gap:10px; }
+}
